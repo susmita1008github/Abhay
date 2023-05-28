@@ -1,0 +1,30 @@
+Pipeline {
+    agent any 
+
+    stages {
+        stage ('install-nginx') {
+            steps{
+                sh "sudo apt update -y"
+                sh " sudo apt install nginx -y"
+
+            }
+        }
+        stage ('deeploy-index') {
+            steps {
+                sh 'sudo echo "this is my first code deeploying" >index.html'
+                sh 'sudo mv index.html /var/www/html/index.html'
+            }
+        }
+        stage ('stop-nginx') {
+            steps {
+                sh "sudo systemctl stop nginx"
+            }
+        }
+        stage ('start-nginx') {
+            steps { 
+            sh "sudo systemctl start nginx"
+            }
+        }
+
+    }
+}
