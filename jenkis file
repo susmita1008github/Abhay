@@ -25,6 +25,16 @@ Pipeline {
             sh "sudo systemctl start nginx"
             }
         }
+            Stage ("install-appache") {
+
+                steps {
+                    sh "this is git hub solve git conflict"
+                }
+            }
+
+            }
+            
 
     }
 }
+      
